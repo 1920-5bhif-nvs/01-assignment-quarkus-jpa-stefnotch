@@ -15,10 +15,10 @@ import java.util.List;
 public abstract class AbstractDao<T> {
 
     @PersistenceContext
-    private EntityManager em;
+    EntityManager em;
 
-    private final Class<T> clazz;
-    private final String findAllQueryName;
+    final Class<T> clazz;
+    final String findAllQueryName;
 
     public AbstractDao(Class<T> clazz, String findAllQueryName) {
         this.clazz = clazz;

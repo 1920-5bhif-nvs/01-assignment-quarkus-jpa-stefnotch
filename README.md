@@ -76,3 +76,10 @@ The Swagger UI is only visible in development mode.
 Do note that it's currently buggy and ignores inherited stuff.
 
 [Source](https://quarkus.io/guides/openapi-swaggerui-guide)
+
+## Health Check
+
+A simple way to check the "health" of your microservice. In other words, a page where you can see stuff like *is the database connection working*.
+To check it out, open [localhost:8080/health](http://localhost:8080/health).
+
+[Source](https://quarkus.io/guides/health-guide)

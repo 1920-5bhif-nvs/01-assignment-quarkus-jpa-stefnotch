@@ -3,10 +3,6 @@ package at.htl.krankenhaus.model;
 
 import javax.persistence.*;
 
-enum A {
-    A
-    ,B,C
-}
 
 @Entity
 @NamedQueries({
@@ -20,8 +16,13 @@ public class Doctor {
     private String name;
     private double salary;
 
+    /*enum A {
+        A
+        ,B,C
+    }
+
     @Enumerated(value = EnumType.STRING)
-    private A test;
+    private A test;*/
 
     public Doctor(String name, double salary) {
         this.name = name;
