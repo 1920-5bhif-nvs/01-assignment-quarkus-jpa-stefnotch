@@ -27,23 +27,41 @@ public class LifecycleBean {
 
     void onStart(@Observes StartupEvent ev) {
         LOGGER.info("Startup");
-        Doctor doc =
-                new Doctor("testDoctor", 0);
-        Patient patient =
-                new Patient("testSubject", LocalDate.now());
+        Doctor doctorStrange = new Doctor("Doctor Strange", 0);
+        Doctor doctorWho = new Doctor("Doctor Strange", 666);
 
-        Treatment testTreatment = new GeneralTreatment(
+        Patient patientChell = new Patient("Test Subject", LocalDate.now());
+        Patient patientAdam = new Patient("Adam Doe", LocalDate.of(1999, 9, 9));
+        Patient patientEve = new Patient("Eve Eveman", LocalDate.of(2001, 3, 2));
+
+        Treatment uselessTreatment = new GeneralTreatment(
                 "Homeopathy",
-                doc,
-                patient,
+                doctorWho,
+                patientAdam,
                 "no outcome",
-                LocalDate.of(1999, 9, 9),
-                LocalDate.of(1999, 9, 19),
-                "Super effective :tm:");
+                LocalDate.now(),
+                LocalDate.now().plusDays(45),
+                "A treatment with a very tenuous effect.");
 
-        doc.persist();
-        patient.persist();
-        testTreatment.persist();
+        Treatment drugTreatment = new DrugTreatment(
+                "Magic Shrooms",
+                doctorStrange,
+                patientEve,
+                "no outcome",
+                LocalDate.now().minusDays(34),
+                LocalDate.now().plusDays(5),
+                "Magic Shrooms",
+                3
+        );
+
+        doctorStrange.persist();
+        doctorWho.persist();
+        patientChell.persist();
+        patientAdam.persist();
+        patientEve.persist();
+
+        uselessTreatment.persist();
+        drugTreatment.persist();
     }
 
     void onStop(@Observes ShutdownEvent ev) {
