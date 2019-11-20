@@ -1,12 +1,9 @@
 package at.htl.krankenhaus.model;
 
-import at.htl.krankenhaus.LocalDateAdapter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
