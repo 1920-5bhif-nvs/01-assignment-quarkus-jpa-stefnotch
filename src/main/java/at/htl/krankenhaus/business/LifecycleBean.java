@@ -54,6 +54,8 @@ public class LifecycleBean {
                 3
         );
 
+        Diagnosis diagnosis = new Diagnosis(doctorWho, patientAdam, "Mild cough", LocalDate.now());
+
         doctorStrange.persist();
         doctorWho.persist();
         patientChell.persist();
@@ -62,6 +64,8 @@ public class LifecycleBean {
 
         uselessTreatment.persist();
         drugTreatment.persist();
+
+        diagnosis.persist();
     }
 
     void onStop(@Observes ShutdownEvent ev) {
