@@ -16,7 +16,34 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Transactional
-public class DoctorEndpoint extends AbstractEndpoint<Doctor> {
+public class DoctorEndpoint {
+    @GET
+    public Response getAll() {
+        return EndpointHelpers.getMany(Doctor.listAll());
+    }
+
+    @GET
+    @Path("{id}")
+    public Response getById(@PathParam("id") long id) {
+        return EndpointHelpers.get(Doctor.findById(id));
+    }
+
+    @POST
+    public Response post(Doctor entity) {
+        return EndpointHelpers.post(entity);
+    }
+
+    @PUT
+    public Response put(Doctor entity) {
+        return EndpointHelpers.put(entity);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response put(@PathParam("id") long id) {
+        return EndpointHelpers.delete(Doctor.findById(id));
+    }
+
     @GET
     @Path("/name/{name}")
     @Counted(name = "doctor_get_count", description = "How many times has a doctor been looked up using the name")

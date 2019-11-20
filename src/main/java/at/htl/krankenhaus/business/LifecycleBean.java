@@ -31,7 +31,6 @@ public class LifecycleBean {
                 new Doctor("testDoctor", 0);
         Patient patient =
                 new Patient("testSubject", LocalDate.now());
-        LOGGER.warn(doc.treatments.toString());
 
         Treatment testTreatment = new GeneralTreatment(
                 "Homeopathy",
@@ -41,21 +40,10 @@ public class LifecycleBean {
                 LocalDate.of(1999, 9, 9),
                 LocalDate.of(1999, 9, 19),
                 "Super effective :tm:");
-        /*
 
-        DrugTreatment dt = new DrugTreatment(
-                "test",
-                doc,
-                patient,
-                "no outcome",
-                LocalDate.of(1999, 9, 9),
-                LocalDate.of(1999, 9, 19),
-                "testDrug",
-                3
-        );
-        em.persist(doc);
-        em.persist(patient);
-        em.persist(dt);*/
+        doc.persist();
+        patient.persist();
+        testTreatment.persist();
     }
 
     void onStop(@Observes ShutdownEvent ev) {

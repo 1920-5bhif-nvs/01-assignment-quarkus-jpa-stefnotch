@@ -2,6 +2,7 @@ package at.htl.krankenhaus.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class Diagnosis extends PanacheEntity {
     public LocalDate diagnosisDate;
 
     @ManyToMany(mappedBy = "diagnoses")
+    @JsonbTransient
     public List<Treatment> treatments = new ArrayList<>();
 
     public Diagnosis() {

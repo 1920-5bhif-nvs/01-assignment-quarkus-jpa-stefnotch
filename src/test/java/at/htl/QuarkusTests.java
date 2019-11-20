@@ -32,7 +32,7 @@ public class QuarkusTests {
                 "no outcome",
                 LocalDate.of(1999, 9, 9),
                 LocalDate.of(1999, 9, 19),
-                "Super effective :tm:");
+                "The placebo is strong with this one.");
 
         assertThat(doc.treatments).isNotEmpty();
         assertThat(doc.treatments.size()).isEqualTo(1);

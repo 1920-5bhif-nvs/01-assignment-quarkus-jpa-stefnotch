@@ -3,6 +3,7 @@ package at.htl.krankenhaus.model;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,11 @@ public class Doctor extends PanacheEntity {
     public double salary;
 
     @OneToMany(mappedBy = "doctor")
+    @JsonbTransient
     public List<Treatment> treatments = new ArrayList<>();
 
     @OneToMany(mappedBy = "doctor")
+    @JsonbTransient
     public List<Diagnosis> diagnoses = new ArrayList<>();
 
     public Doctor(String name, double salary) {

@@ -17,9 +17,11 @@ public class Patient extends PanacheEntity {
     public LocalDate birthdate;
 
     @OneToMany(mappedBy = "patient")
+    @JsonbTransient
     public List<Treatment> treatments = new ArrayList<>();
 
     @OneToMany(mappedBy = "patient")
+    @JsonbTransient
     public List<Diagnosis> diagnoses = new ArrayList<>();
 
     public Patient() {

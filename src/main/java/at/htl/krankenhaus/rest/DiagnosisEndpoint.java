@@ -1,43 +1,41 @@
 package at.htl.krankenhaus.rest;
 
-import at.htl.krankenhaus.model.Doctor;
-import at.htl.krankenhaus.model.GeneralTreatment;
+import at.htl.krankenhaus.model.Diagnosis;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("generaltreatment")
+@Path("diagnosis")
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 @Transactional
-public class GeneralTreatmentEndpoint {
+public class DiagnosisEndpoint {
     @GET
     public Response getAll() {
-        return EndpointHelpers.getMany(GeneralTreatment.listAll());
+        return EndpointHelpers.getMany(Diagnosis.listAll());
     }
 
     @GET
     @Path("{id}")
     public Response getById(@PathParam("id") long id) {
-        return EndpointHelpers.get(GeneralTreatment.findById(id));
+        return EndpointHelpers.get(Diagnosis.findById(id));
     }
 
     @POST
-    public Response post(GeneralTreatment entity) {
+    public Response post(Diagnosis entity) {
         return EndpointHelpers.post(entity);
     }
 
     @PUT
-    public Response put(GeneralTreatment entity) {
+    public Response put(Diagnosis entity) {
         return EndpointHelpers.put(entity);
     }
 
     @DELETE
     @Path("{id}")
     public Response put(@PathParam("id") long id) {
-        return EndpointHelpers.delete(GeneralTreatment.findById(id));
+        return EndpointHelpers.delete(Diagnosis.findById(id));
     }
-
 }
