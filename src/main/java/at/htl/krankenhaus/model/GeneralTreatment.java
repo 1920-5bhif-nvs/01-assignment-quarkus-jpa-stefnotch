@@ -6,11 +6,8 @@ import javax.persistence.NamedQuery;
 import java.time.LocalDate;
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "GeneralTreatment.findAll", query = "select g from GeneralTreatment g")
-})
 public class GeneralTreatment extends Treatment {
-    private String treatmentInformation;
+    public String treatmentInformation;
 
     public GeneralTreatment(String name, Doctor doctor, Patient patient, String outcome, LocalDate startDate, LocalDate endDate, String treatmentInformation) {
         super(name, doctor, patient, outcome, startDate, endDate);
@@ -18,13 +15,5 @@ public class GeneralTreatment extends Treatment {
     }
 
     public GeneralTreatment() {
-    }
-
-    public String getTreatmentInformation() {
-        return treatmentInformation;
-    }
-
-    public void setTreatmentInformation(String treatmentInformation) {
-        this.treatmentInformation = treatmentInformation;
     }
 }

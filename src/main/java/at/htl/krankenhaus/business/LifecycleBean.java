@@ -1,9 +1,6 @@
 package at.htl.krankenhaus.business;
 
-import at.htl.krankenhaus.model.Doctor;
-import at.htl.krankenhaus.model.DrugTreatment;
-import at.htl.krankenhaus.model.Patient;
-import at.htl.krankenhaus.model.Treatment;
+import at.htl.krankenhaus.model.*;
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
 import org.slf4j.Logger;
@@ -34,6 +31,18 @@ public class LifecycleBean {
                 new Doctor("testDoctor", 0);
         Patient patient =
                 new Patient("testSubject", LocalDate.now());
+        LOGGER.warn(doc.treatments.toString());
+
+        Treatment testTreatment = new GeneralTreatment(
+                "Homeopathy",
+                doc,
+                patient,
+                "no outcome",
+                LocalDate.of(1999, 9, 9),
+                LocalDate.of(1999, 9, 19),
+                "Super effective :tm:");
+        /*
+
         DrugTreatment dt = new DrugTreatment(
                 "test",
                 doc,
@@ -46,7 +55,7 @@ public class LifecycleBean {
         );
         em.persist(doc);
         em.persist(patient);
-        em.persist(dt);
+        em.persist(dt);*/
     }
 
     void onStop(@Observes ShutdownEvent ev) {

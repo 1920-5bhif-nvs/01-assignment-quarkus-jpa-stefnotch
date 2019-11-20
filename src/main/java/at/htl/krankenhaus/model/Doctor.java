@@ -1,28 +1,23 @@
 package at.htl.krankenhaus.model;
 
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Doctor.findAll", query = "select d from Doctor d"),
-        @NamedQuery(name = "Doctor.findByName", query = "select d from Doctor d where d.name = :name")
-})
-public class Doctor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private double salary;
+public class Doctor extends PanacheEntity {
+    public String name;
+    public double salary;
 
-    /*enum A {
-        A
-        ,B,C
-    }
+    @OneToMany(mappedBy = "doctor")
+    public List<Treatment> treatments = new ArrayList<>();
 
-    @Enumerated(value = EnumType.STRING)
-    private A test;*/
+    @OneToMany(mappedBy = "doctor")
+    public List<Diagnosis> diagnoses = new ArrayList<>();
 
     public Doctor(String name, double salary) {
         this.name = name;
@@ -32,23 +27,7 @@ public class Doctor {
     public Doctor() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public static Doctor findByName(String name) {
+        return find("name", name).firstResult();
     }
 }

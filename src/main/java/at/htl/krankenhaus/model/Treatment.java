@@ -1,5 +1,7 @@
 package at.htl.krankenhaus.model;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -8,26 +10,19 @@ import java.util.List;
 // Often, multiple diagnoses are needed for a certain treatment (X-Ray, MRT, ..)
 // One diagnose can result in multiple treatments
 @Entity
-@NamedQueries({
-        @NamedQuery(name = "Treatment.findAll", query = "select t from Treatment t")
-})
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public abstract class Treatment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
+public abstract class Treatment extends PanacheEntity {
+    public String name;
     @ManyToOne
-    private Doctor doctor;
+    public Doctor doctor;
     @ManyToOne
-    private Patient patient;
-    private String outcome; // Doctors tend to write down quite a bunch of things
-
-    private LocalDate startDate;
-    private LocalDate endDate;
-
-    @ManyToMany//(mappedBy = "treatments")
-    private List<Diagnosis> diagnoses = new ArrayList<>();
+    public Patient patient;
+    // Doctors tend to write down quite a bunch of things
+    public String outcome;
+    public LocalDate startDate;
+    public LocalDate endDate;
+    // A treatment is justified by 1+ diagnoses. 1 diagnose can result in multiple treatments
+    @ManyToMany
+    public List<Diagnosis> diagnoses = new ArrayList<>();
 
     public Treatment() {
     }
@@ -38,58 +33,6 @@ public abstract class Treatment {
         this.patient = patient;
         this.outcome = outcome;
         this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public String getOutcome() {
-        return outcome;
-    }
-
-    public void setOutcome(String outcome) {
-        this.outcome = outcome;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
