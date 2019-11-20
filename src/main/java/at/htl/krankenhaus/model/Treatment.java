@@ -21,7 +21,7 @@ public abstract class Treatment extends PanacheEntity {
     public LocalDate startDate;
     public LocalDate endDate;
     // A treatment is justified by 1+ diagnoses. 1 diagnose can result in multiple treatments
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // Always load the diagnoses with the treatment. Not sure if this is a good idea.
     public List<Diagnosis> diagnoses = new ArrayList<>();
 
     public Treatment() {
