@@ -91,6 +91,7 @@ The most important things that Panache makes easier are
 - Writing queries is a whole lot easier.
 
 However, as glorious as it might be, it's still in development and is lacking some features. For example, it doesn't have a [merge](https://github.com/quarkusio/quarkus/issues/3969) function.
+Another thing to note is that I had to rework my AbstractEndpoint to a helper class, due to various Java language limitations with static methods and inheritance.
 
 By the way, I'm not sure if this is a feature of Panache, but [Hibernate Bytecode Enhancements - Dirty Tracking](http://isd-soft.com/tech_blog/hibernate-bytecode-enhancement-dirty-tracking/) is turned on by default.
 The test case in `/test/java/at/htl/QuarkusTests.java` verifies this. 
@@ -149,7 +150,7 @@ War meines Wissens bei der Uebung 01 nicht gefordert. Die [Uebung 02](https://gi
 > Im  vorliegenden  Bsp  fehlen  add-Methoden  und  es  werden  die  bidirektionalen  Assoziationennicht korrekt gesetzt (bei CRUD-Operationen)
 > - [ ] Es sind nicht alle Tabellen mit Testdaten befüllt und dann nur 1 Datensatz
 
-Ich habe diese Probleme soeben behoben und auch gleich Panache ausprobiert.
+Ich habe diese Probleme soeben behoben und auch gleich Panache ausprobiert. Mit Panache sind die bidirektionalen Beziehungen auch kein Problem mehr (siehe oben).
 
 > - [ ] RestConfig ist in Quarkus nicht notwendig
 
