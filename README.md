@@ -1,6 +1,16 @@
 # 01-assignment-quarkus-jpa-stefnotch
 [Open in browser](http://localhost:8080)
 
+This school project manages a small aspect of a hospital. It manages the doctors, patients, diagnoses and treatments.
+
+## CLD
+![CLD](CLD.png)
+
+
+## ERD
+![ERD](ERD.png)
+
+
 ## Quarkus setup
 https://code.quarkus.io/
 
@@ -140,8 +150,6 @@ War meines Wissens bei der Uebung 01 nicht gefordert. Die [Uebung 02](https://gi
 
 
 ### Responses - Fixed
-
-> - [x] postegres lokal zu installieren ist wahrscheinlich nicht optimal → besser [docker siehe Schwarzc](https://github.com/1920-5bhif-nvs/01-assignment-quarkus-jpa-ZekReshi)
 
 > - [ ] es fehlt ...
 >   - ein CLD und ein ERD
