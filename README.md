@@ -14,15 +14,10 @@ This school project manages a small aspect of a hospital. It manages the doctors
 ## Quarkus setup
 https://code.quarkus.io/
 
+![Quarkus Extensions](Quarkus%20Extensions.png)
+
 By the way, `@Stateless` isn't a thing in Quarkus. 
 
-To get Json serialisation to work, you can add the following to the `pom.xml`
-```
-<dependency>
-  <groupId>io.quarkus</groupId>
-  <artifactId>quarkus-resteasy-jsonb</artifactId>
-</dependency>
-```
 [Source](https://stackoverflow.com/a/56656851)
 
 ## Database starting (PostgreSQL)
