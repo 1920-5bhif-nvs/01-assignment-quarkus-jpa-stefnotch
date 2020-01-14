@@ -114,6 +114,11 @@ It works alongside Junit5 and other testing frameworks. To use it after having a
 import static org.assertj.core.api.Assertions.*;
 ```
 
+## Plugins
+The following plugins are recommended
+- Quarkus
+- TabNine
+
 ## Feedback - 1 
 > - [x] im Gegensatz zu den meisten Deiner Kollegen eine umfangreiche Doku
 > - [ ] es fehlt ...
