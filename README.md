@@ -119,6 +119,24 @@ The following plugins are recommended
 - Quarkus
 - TabNine
 
+## EntityGraph
+
+Entities have references to other entities. e.g.
+```java
+@Entity
+public class Diagnosis extends PanacheEntity {
+    @ManyToOne
+    public Doctor doctor;
+}
+```
+By default, a `@ManyToOne` relationship is eagerly fetched. Meaning, it's fetched when you fetch the diagnosis.
+However, this is not always desireable. And always setting it to lazy is also rather inconvenient.
+So, entity graphs were invented and they let you specify which things to load and which ones to ignore.
+
+So, entity graphs are a rather recent addition to Quarkus. [Tracking issue](https://github.com/quarkusio/quarkus/issues/3483)
+This project uses an old Quarkus version and I can't trivially update it, because they did some backwards incompatible changes.
+For example, they [turned off the Hibernate bytecode enhancements](https://quarkus.io/blog/quarkus-1-3-0-final-released/).
+
 ## Feedback - 1 
 > - [x] im Gegensatz zu den meisten Deiner Kollegen eine umfangreiche Doku
 > - [ ] es fehlt ...
